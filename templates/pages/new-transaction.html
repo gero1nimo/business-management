@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="col-md-9 col-lg-9 ms-sm-auto col-xl-10 px-md-4">
+      <h1 class="h2">Create New Transaction</h1>
+      <form method="POST" action="/new-transaction/">
+        <table class="table table-striped">
+          {{ form.as_table}}
+        </table>
+        {% csrf_token %}
+        <button type="POST" class="btn btn-primary">Create Item</button>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+{% endblock %} {% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Add any JavaScript needed for the create page here
+  });
+</script>
+{% endblock %}

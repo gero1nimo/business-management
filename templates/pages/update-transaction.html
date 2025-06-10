@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block content %}
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="col-md-9 col-lg-9 ms-sm-auto col-xl-10 px-md-4">
+    <h2 class="h4">Update Transaction</h2>
+    <form
+      method="POST"
+      action="{% url 'update-transaction' transaction.islem_id %}"
+    >
+      {% csrf_token %}
+      <table class="table table-striped">
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn btn-primary">Update Transaction</button>
+    </form>
+  </div>
+</main>
+{% endblock%}

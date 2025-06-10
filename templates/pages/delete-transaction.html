@@ -1,0 +1,16 @@
+{% {% extends "layout.html" %}%} {% block content %}
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="col-md-9 col-lg-9 ms-sm-auto col-xl-10 px-md-4">
+    <h1 class="h2">Delete Transaction</h1>
+    <form method="POST" action="/delete-transaction/">
+      {% csrf_token %}
+      <input type="hidden" name="islem_id" value="{{ transaction.islem_id }}" />
+      <p>Are you sure you want to delete this transaction?</p>
+      <button type="submit" class="btn btn-danger">Delete Transaction</button>
+      <a href="/transactions/" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+</main>
+{% endblock %}

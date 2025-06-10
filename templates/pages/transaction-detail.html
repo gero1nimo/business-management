@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="col-md-9 col-lg-9 ms-sm-auto col-xl-10 px-md-4">
+    <h1 class="h2">İşlem Detayı</h1>
+    <table class="table table-striped">
+      <tr>
+        <th>İşlem ID</th>
+        <td>{{ transaction.islem_id }}</td>
+      </tr>
+      <tr>
+        <th>İşlem Tarihi</th>
+        <td>{{ transaction.islem_tarihi }}</td>
+      </tr>
+      <tr>
+        <th>İşlem Türü</th>
+        <td>{{ transaction.islem_turu }}</td>
+      </tr>
+      <tr>
+        <th>Miktarı</th>
+        <td>{{ transaction.islem_miktari }}</td>
+      </tr>
+      <tr>
+        <th>Açıklama</th>
+        <td>{{ transaction.aciklama }}</td>
+      </tr>
+    </table>
+
+    <a href="/transactions/" class="btn btn-secondary">Back to Transactions</a>
+    <a
+      href="{% url 'update-transaction' transaction.islem_id %}"
+      class="btn btn-primary"
+      >Edit Transaction</a
+    >
+    <form
+      method="POST"
+      action="{% url 'delete-transaction' transaction.islem_id %}"
+    >
+      {% csrf_token %}
+      <input type="hidden" name="islem_id" value="{{ transaction.islem_id }}" />
+      <button type="submit" class="btn btn-danger">Delete Transaction</button>
+    </form>
+  </div>
+</main>
+{% endblock %}
